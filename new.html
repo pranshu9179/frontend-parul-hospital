@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dhow Cruise Dinner – Marina Price & Offers</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --brand:#ff6a00; --brand-dark:#e15f00; --muted:#6b7280; }
+    html,body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; background:#fafafa; }
+    /* Hide native number input arrows (we build our own) */
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+    /* Nice focus ring */
+    .focus-ring:focus { outline: 2px solid rgba(255,106,0,.25); outline-offset: 2px; }
+    /* Tiny tooltip */
+    .tooltip:hover .tooltip-card { opacity:1; transform:translateY(0); pointer-events:auto; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="mx-auto max-w-[1200px] px-4 py-6">
+    <!-- Title -->
+    <div class="rounded-2xl border border-orange-100 bg-white shadow-sm">
+      <div class="flex items-center gap-3 border-b px-6 py-5">
+        <div class="h-5 w-1.5 rounded-full bg-[var(--brand)]"></div>
+        <h1 class="text-2xl font-semibold text-gray-800">
+          Dhow Cruise Dinner - Marina Price & Offers
+        </h1>
+      </div>
+
+      <!-- Header row -->
+      <div class="grid grid-cols-12 items-center gap-4 border-b px-6 py-4 text-sm font-semibold text-gray-600">
+        <div class="col-span-4">Tour Option</div>
+
+        <div class="col-span-2 flex items-center gap-2">
+          <span>Transfer Option</span>
+          <!-- info tooltip -->
+          <span class="tooltip relative inline-flex">
+            <span class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-[11px] text-gray-500">i</span>
+            <span class="tooltip-card pointer-events-none absolute left-1/2 z-20 mt-2 w-64 -translate-x-1/2 transform rounded-lg border border-gray-200 bg-white p-3 text-xs text-gray-600 shadow-lg opacity-0 transition">
+              Choose how you travel: <b>Without Transfers</b> (no extra), <b>Shared</b> (+AED 50 per guest), or <b>Private</b> (+AED 120 per guest).
+            </span>
+          </span>
+        </div>
+
+        <div class="col-span-2">Tour Date</div>
+        <div class="col-span-1">Adult</div>
+        <div class="col-span-1">Child</div>
+        <div class="col-span-1">Infant</div>
+
+        <div class="col-span-1 flex items-center gap-2 justify-end">
+          <span>Total amount</span>
+          <span class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-[11px] text-gray-500">i</span>
+        </div>
+      </div>
+
+      <!-- ============ ROWS ============ -->
+      <div id="rows" class="divide-y">
+        <!-- Row template is injected by JS for consistency -->
+      </div>
+
+      <!-- Footer with Add to Cart -->
+      <div class="flex items-center justify-end gap-4 px-6 py-5">
+        <button id="addToCart" class="rounded-xl bg-[var(--brand)] px-6 py-3 text-white font-semibold shadow hover:bg-[var(--brand-dark)] transition disabled:cursor-not-allowed disabled:opacity-60">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- Cart summary toast -->
+    <div id="toast" class="pointer-events-none fixed bottom-6 right-6 z-50 hidden max-w-md rounded-xl border border-gray-200 bg-white p-4 shadow-2xl">
+      <div class="flex items-start gap-3">
+        <div class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-700">
+          <!-- check icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <div class="min-w-0 flex-1">
+          <p class="font-semibold text-gray-800">Added to Cart</p>
+          <div id="toastBody" class="mt-1 text-sm text-gray-600 whitespace-pre-wrap"></div>
+        </div>
+        <button onclick="hideToast()" class="ml-2 text-gray-400 hover:text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 8.586l4.95-4.95 1.414 1.414L11.414 10l4.95 4.95-1.414 1.414L10 11.414l-4.95 4.95-1.414-1.414L8.586 10l-4.95-4.95L5.05 3.636 10 8.586z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== TEMPLATES & SCRIPT ====== -->
+  <template id="rowTemplate">
+    <div class="grid grid-cols-12 items-center gap-4 px-6 py-5">
+      <!-- Tour option column -->
+      <div class="col-span-4">
+        <div class="flex items-start gap-3">
+          <input type="checkbox" class="mt-1 h-4 w-4 accent-[var(--brand)] focus:ring-[var(--brand)] focus:ring-2 rounded-sm option-check" />
+          <div class="min-w-0">
+            <p class="font-medium text-gray-800 option-title"></p>
+            <div class="mt-1 flex items-center gap-4 text-sm">
+              <button class="more-info text-[var(--brand)] hover:underline">More Info</button>
+              <span class="hidden sm:inline-block text-gray-300">|</span>
+              <span class="badge hidden rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-600"></span>
+            </div>
+            <!-- hidden details -->
+            <div class="info hidden mt-3 rounded-lg border border-gray-200 bg-gray-50 p-3 text-sm text-gray-600"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transfer option -->
+      <div class="col-span-2">
+        <div class="relative">
+          <select class="transfer w-full appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-9 text-sm text-gray-800 focus:ring-2 focus:ring-orange-200">
+            <option value="none">Without Transfers</option>
+            <option value="shared">Shared Transfers (+ AED 50 / guest)</option>
+            <option value="private">Private Transfers (+ AED 120 / guest)</option>
+          </select>
+          <div class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2">
+            <!-- down chevron -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date -->
+      <div class="col-span-2">
+        <div class="relative">
+          <input type="date" class="date w-full rounded-lg border border-gray-300 bg-white px-3 py-2 pr-9 text-sm text-gray-800 focus:ring-2 focus:ring-orange-200" />
+          <div class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2">
+            <!-- calendar icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--brand)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adult -->
+      <div class="col-span-1">
+        <div class="qty-wrap group relative">
+          <input type="number" min="0" max="20" value="1" class="adult w-full rounded-lg border border-gray-300 bg-white px-3 py-2 pr-10 text-center text-sm focus:ring-2 focus:ring-orange-200" />
+          <div class="absolute right-1 top-1/2 -translate-y-1/2">
+            <div class="flex flex-col overflow-hidden rounded-md border border-gray-200">
+              <button class="adult-inc h-4 w-6 text-gray-600 hover:bg-gray-50" aria-label="Increase adult">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 12.79a.75.75 0 001.06-.02L10 9.06l3.71 3.71a.75.75 0 101.06-1.06l-4.24-4.25a.75.75 0 00-1.06 0L5.21 11.71a.75.75 0 00.02 1.08z"/></svg>
+              </button>
+              <button class="adult-dec h-4 w-6 text-gray-600 hover:bg-gray-50" aria-label="Decrease adult">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M14.77 7.21a.75.75 0 00-1.06.02L10 10.94 6.29 7.23a.75.75 0 10-1.06 1.06l4.24 4.25a.75.75 0 001.06 0l4.24-4.25a.75.75 0 00-.02-1.08z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Child -->
+      <div class="col-span-1">
+        <div class="qty-wrap group relative">
+          <input type="number" min="0" max="20" value="0" class="child w-full rounded-lg border border-gray-300 bg-white px-3 py-2 pr-10 text-center text-sm focus:ring-2 focus:ring-orange-200" />
+          <div class="absolute right-1 top-1/2 -translate-y-1/2">
+            <div class="flex flex-col overflow-hidden rounded-md border border-gray-200">
+              <button class="child-inc h-4 w-6 text-gray-600 hover:bg-gray-50" aria-label="Increase child">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 12.79a.75.75 0 001.06-.02L10 9.06l3.71 3.71a.75.75 0 101.06-1.06l-4.24-4.25a.75.75 0 00-1.06 0L5.21 11.71a.75.75 0 00.02 1.08z"/></svg>
+              </button>
+              <button class="child-dec h-4 w-6 text-gray-600 hover:bg-gray-50" aria-label="Decrease child">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M14.77 7.21a.75.75 0 00-1.06.02L10 10.94 6.29 7.23a.75.75 0 10-1.06 1.06l4.24 4.25a.75.75 0 001.06 0l4.24-4.25a.75.75 0 00-.02-1.08z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infant -->
+      <div class="col-span-1">
+        <div class="qty-wrap group relative">
+          <input type="number" min="0" max="20" value="0" class="infant w-full rounded-lg border border-gray-300 bg-white px-3 py-2 pr-10 text-center text-sm focus:ring-2 focus:ring-orange-200" />
+          <div class="absolute right-1 top-1/2 -translate-y-1/2">
+            <div class="flex flex-col overflow-hidden rounded-md border border-gray-200">
+              <button class="infant-inc h-4 w-6 text-gray-600 hover:bg-gray-50" aria-label="Increase infant">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 12.79a.75.75 0 001.06-.02L10 9.06l3.71 3.71a.75.75 0 101.06-1.06l-4.24-4.25a.75.75 0 00-1.06 0L5.21 11.71a.75.75 0 00.02 1.08z"/></svg>
+              </button>
+              <button class="infant-dec h-4 w-6 text-gray-600 hover:bg-gray-50" aria-label="Decrease infant">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M14.77 7.21a.75.75 0 00-1.06.02L10 10.94 6.29 7.23a.75.75 0 10-1.06 1.06l4.24 4.25a.75.75 0 001.06 0l4.24-4.25a.75.75 0 00-.02-1.08z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="col-span-1 text-right">
+        <div class="total text-right text-lg font-semibold text-gray-800">AED 0.00</div>
+        <div class="mt-1 text-xs">
+          <div class="strike hidden text-gray-400 line-through">AED 0.00</div>
+          <div class="save hidden text-sky-600">Save 0.00</div>
+          <div class="rewards hidden text-red-600 font-medium">Earn 0 R Points</div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    // ---------- Data that mirrors your screenshot ----------
+    const OPTIONS = [
+      {
+        id: "lower",
+        title: "Dhow Cruise Dinner Marina - Lower Deck",
+        info: "Enjoy a cozy evening on the lower deck with buffet dinner, soft beverages, and live entertainment.",
+        badge: "", // none
+        base: { adult: 140, child: 140, infant: 0 }, // AED per guest
+        rewards: 1000,
+        strike: null, // no MRP
+        savePerAdult: null
+      },
+      {
+        id: "upper",
+        title: "Dhow Cruise Dinner Marina - Upper Deck",
+        info: "Open-air seating on the upper deck with panoramic Marina views, dinner, and live shows included.",
+        badge: "", // none
+        base: { adult: 165, child: 165, infant: 0 },
+        rewards: 2000,
+        strike: 200, // shows AED 200.00 (strikethrough)
+        savePerAdult: 35  // shows Save 35.00
+      },
+      {
+        id: "beverage",
+        title: "Dhow Cruise Beverage Package - Add on only",
+        info: "Unlimited soft beverages add-on to complement your dinner experience.",
+        badge: "Add on only",
+        base: { adult: 70, child: 70, infant: 0 },
+        rewards: null,
+        strike: null,
+        savePerAdult: null
+      }
+    ];
+
+    // Transfer surcharges (per paying guest)
+    const TRANSFER_SURCHARGE = {
+      none: 0,
+      shared: 50,
+      private: 120
+    };
+
+    // Default date to 2025-09-03 (from your screenshot)
+    const DEFAULT_DATE = "2025-09-03";
+
+    // ---------- Helpers ----------
+    const fmt = (n) => `AED ${Number(n).toFixed(2)}`;
+
+    function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+
+    // ---------- Render Rows ----------
+    const rowsRoot = document.getElementById("rows");
+    const tpl = document.getElementById("rowTemplate");
+
+    const rowState = {}; // id -> state
+
+    OPTIONS.forEach((opt) => {
+      const node = tpl.content.cloneNode(true);
+      const row = node.querySelector(".grid");
+
+      // Map elements
+      const check = row.querySelector(".option-check");
+      const title = row.querySelector(".option-title");
+      const infoBox = row.querySelector(".info");
+      const moreInfo = row.querySelector(".more-info");
+      const badge = row.querySelector(".badge");
+      const transfer = row.querySelector(".transfer");
+      const date = row.querySelector(".date");
+
+      const adultInput = row.querySelector(".adult");
+      const childInput = row.querySelector(".child");
+      const infantInput = row.querySelector(".infant");
+
+      const adultInc = row.querySelector(".adult-inc");
+      const adultDec = row.querySelector(".adult-dec");
+      const childInc = row.querySelector(".child-inc");
+      const childDec = row.querySelector(".child-dec");
+      const infantInc = row.querySelector(".infant-inc");
+      const infantDec = row.querySelector(".infant-dec");
+
+      const totalEl = row.querySelector(".total");
+      const strikeEl = row.querySelector(".strike");
+      const saveEl = row.querySelector(".save");
+      const rewardsEl = row.querySelector(".rewards");
+
+      // Content
+      title.textContent = opt.title;
+      infoBox.textContent = opt.info;
+      date.value = DEFAULT_DATE;
+
+      if (opt.badge) {
+        badge.textContent = opt.badge;
+        badge.classList.remove("hidden");
+      }
+
+      // Strike/MRP (static label like screenshot)
+      if (opt.strike) {
+        strikeEl.textContent = fmt(opt.strike);
+        strikeEl.classList.remove("hidden");
+      }
+      if (opt.savePerAdult) {
+        saveEl.textContent = `Save ${opt.savePerAdult.toFixed(2)}`;
+        saveEl.classList.remove("hidden");
+      }
+      if (opt.rewards) {
+        rewardsEl.textContent = `Earn ${opt.rewards.toLocaleString()} R Points`;
+        rewardsEl.classList.remove("hidden");
+      }
+
+      // State
+      rowState[opt.id] = {
+        checked: false,
+        transfer: "none",
+        date: DEFAULT_DATE,
+        adult: 1,
+        child: 0,
+        infant: 0,
+        base: opt.base,
+        strike: opt.strike,
+        savePerAdult: opt.savePerAdult,
+        rewards: opt.rewards,
+        total: 0,
+        el: row
+      };
+
+      // Quantity control wiring
+      function bindStep(btnPlus, btnMinus, input, key) {
+        btnPlus.addEventListener("click", () => {
+          input.value = clamp(Number(input.value) + 1, 0, 20);
+          rowState[opt.id][key] = Number(input.value);
+          recalc(opt.id);
+        });
+        btnMinus.addEventListener("click", () => {
+          input.value = clamp(Number(input.value) - 1, 0, 20);
+          rowState[opt.id][key] = Number(input.value);
+          recalc(opt.id);
+        });
+        input.addEventListener("input", () => {
+          input.value = clamp(Number(input.value || 0), 0, 20);
+          rowState[opt.id][key] = Number(input.value);
+          recalc(opt.id);
+        });
+      }
+
+      bindStep(adultInc, adultDec, adultInput, "adult");
+      bindStep(childInc, childDec, childInput, "child");
+      bindStep(infantInc, infantDec, infantInput, "infant");
+
+      transfer.addEventListener("change", (e) => {
+        rowState[opt.id].transfer = e.target.value;
+        recalc(opt.id);
+      });
+      date.addEventListener("change", (e) => {
+        rowState[opt.id].date = e.target.value;
+      });
+      check.addEventListener("change", (e) => {
+        rowState[opt.id].checked = e.target.checked;
+        row.classList.toggle("bg-orange-50/40", e.target.checked);
+        enableDisable(e.target.checked);
+        updateAddToCartState();
+      });
+
+      // More Info toggler
+      moreInfo.addEventListener("click", () => {
+        infoBox.classList.toggle("hidden");
+      });
+
+      // Enable/disable controls when not checked
+      function enableDisable(enabled) {
+        [transfer, date, adultInput, childInput, infantInput,
+         adultInc, adultDec, childInc, childDec, infantInc, infantDec]
+          .forEach(el => {
+            el.disabled = !enabled;
+            el.classList.toggle("opacity-50", !enabled);
+            el.classList.toggle("pointer-events-none", !enabled);
+          });
+      }
+      enableDisable(false);
+
+      // Initial total text (as in screenshot defaults)
+      function recalc(id) {
+        const s = rowState[id];
+        const payingGuests = s.adult + s.child; // infants free
+        const surcharge = TRANSFER_SURCHARGE[s.transfer] * payingGuests;
+
+        const baseTotal =
+          s.adult * s.base.adult +
+          s.child * s.base.child +
+          s.infant * s.base.infant;
+
+        const total = baseTotal + surcharge;
+        s.total = total;
+
+        totalEl.textContent = fmt(total);
+
+        // Show strike price multiplied by adults only (like screenshot, static per adult)
+        if (s.strike) {
+          const strikeTotal = s.strike * (s.adult || 1); // show at least once for visibility
+          strikeEl.textContent = fmt(strikeTotal);
+        }
+        // Save amount proportional to adults selected
+        if (s.savePerAdult) {
+          const saveTotal = s.savePerAdult * (s.adult || 1);
+          saveEl.textContent = `Save ${saveTotal.toFixed(2)}`;
+        }
+      }
+
+      // Prime totals with defaults (1 adult for UI parity)
+      recalc(opt.id);
+
+      rowsRoot.appendChild(node);
+    });
+
+    function updateAddToCartState() {
+      const any = Object.values(rowState).some(r => r.checked);
+      document.getElementById("addToCart").disabled = !any;
+    }
+    updateAddToCartState();
+
+    // ---------- Add to Cart ----------
+    document.getElementById("addToCart").addEventListener("click", () => {
+      const chosen = Object.values(rowState).filter(r => r.checked);
+      if (!chosen.length) return;
+
+      // Build summary
+      let grand = 0;
+      const lines = chosen.map((r) => {
+        grand += r.total;
+        const date = r.date ? new Date(r.date).toLocaleDateString("en-GB") : "-";
+        const title = r.el.querySelector(".option-title").textContent.trim();
+        return `• ${title}\n  Date: ${date}\n  Transfer: ${r.transfer === 'none' ? 'Without Transfers' : (r.transfer === 'shared' ? 'Shared Transfers' : 'Private Transfers')}\n  Pax: Adult ${r.adult}, Child ${r.child}, Infant ${r.infant}\n  Total: ${fmt(r.total)}`;
+      }).join("\n\n");
+
+      const body = `${lines}\n\nGrand Total: ${fmt(grand)}`;
+      showToast(body);
+    });
+
+    function showToast(text) {
+      const toast = document.getElementById("toast");
+      document.getElementById("toastBody").textContent = text;
+      toast.classList.remove("hidden");
+      toast.classList.add("animate-slide-in");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(hideToast, 6000);
+    }
+    function hideToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("hidden");
+    }
+
+    // Tiny keyframe for toast
+    (function injectAnim(){
+      const style = document.createElement("style");
+      style.textContent = `
+        @keyframes slideIn { from { transform: translateY(8px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+        .animate-slide-in { animation: slideIn .18s ease-out; }
+      `;
+      document.head.appendChild(style);
+    })();
+  </script>
+</body>
+</html>
