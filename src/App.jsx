@@ -2,9 +2,9 @@
 import { Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layout/Layout";
 // import Hero from "./components/Hero";
-import AboutUs from "./components/AboutUs";
-import Services from "./components/Services";
-import ContactUs from "./components/ContactUs";
+import AboutUs from "./Components/AboutUs";
+import Services from "./Components/Services";
+import ContactUs from "./Components/ContactUs";
 import HomePage from "./Home/HomePage";
 import Doctor from "./Components/DoctorsPage";
 import DoctorProfile from "./Components/DoctorProfile'";
