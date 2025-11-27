@@ -1,5 +1,5 @@
 import React from 'react'
-import nabh from "../assets/nabh.png"
+import nabh from "../assets/nabh.webp"
 import {
   FaAward,
   FaUserMd,

@@ -303,12 +303,12 @@
 
 import React, { useState } from 'react';
 import { FaSearch, FaHospital, FaFlask, FaBed, FaStar } from 'react-icons/fa';
-import allergy from "../assets/allergy.jpg";
-import gyencology from "../assets/gyencology.jpg";
-import pulmonary from "../assets/pulmonary.jpg";
-import surgery from "../assets/surgery.jpg";
-import sleep from "../assets/sleep.jpg";
-import critical from "../assets/critical.jpg";
+import allergy from "../assets/allergy.webp";
+import gyencology from "../assets/gyencology.webp";
+import pulmonary from "../assets/pulmonary.webp";
+import surgery from "../assets/surgery.webp";
+import sleep from "../assets/sleep.webp";
+import critical from "../assets/critical.webp";
 
 const FacilityGallery = () => {
   const [searchQuery, setSearchQuery] = useState('');

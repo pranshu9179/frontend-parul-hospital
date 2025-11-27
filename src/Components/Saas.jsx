@@ -3,7 +3,7 @@
 // // // import saasLogoWall from "../assets/saas-logo-wall.jpg"; // lobby wall image (use provided image)
 // // // import saasSign1 from "../assets/saas-sign-1.jpg"; // exterior sign closeup
 // // // import saasBanner from "../assets/saas-banner.jpg"; // large external banner
-// // // import hospital from "../assets/Hospital.jpg"; // existing hospital shot (optional)
+// // // import hospital from "../assets/Hospital.webp"; // existing hospital shot (optional)
 
 // // import saas from "../assets/saas.jpeg";
 
@@ -426,7 +426,7 @@
 // // import saasLogoWall from "../assets/saas-logo-wall.jpg";
 // // import saasSign1 from "../assets/saas-sign-1.jpg";
 // // import saasBanner from "../assets/saas-banner.jpg";
-// // import hospital from "../assets/Hospital.jpg";
+// // import hospital from "../assets/Hospital.webp";
 
 // import saas from "../assets/saas.jpeg";
 
@@ -679,9 +679,255 @@
 
 // export default SAAS;
 
-import saas from "../assets/saas.jpeg";
-import hospital from "../assets/Hospital.jpg";
-import saas1 from "../assets/saas1.png";
+// import hospital from "../assets/Hospital.webp";
+// import saas1 from "../assets/saas1.webp";
+
+// import {
+//   FaPhoneAlt,
+//   FaMapMarkerAlt,
+//   FaClock,
+//   FaStethoscope,
+//   FaHeartbeat,
+//   FaBed,
+//   FaUserMd,
+// } from "react-icons/fa";
+
+// const SAAS = () => {
+//   return (
+//     <div className="bg-gray-50 text-gray-900">
+//       {/* ================= HERO HEADING ================= */}
+//       <section className="relative bg-white py-6 px-4">
+//         <div className="text-center max-w-3xl mx-auto">
+//           <h2 className="text-3xl md:text-3xl text-[#192131] font-bold mb-2 tracking-wide">
+//             <span className="text-[#00A297]">SAAS</span>
+//           </h2>
+
+//           <div className="w-24 h-1 bg-[#00A297] mx-auto rounded-full mb-4" />
+
+//           <p className="text-sm md:text-xl text-gray-500 max-w-xl mx-auto">
+//             "Superspeciality Asthma, Allergy & Sleep Centre"
+//           </p>
+//         </div>
+//       </section>
+
+//       {/* ================= MAIN HERO SECTION ================= */}
+//       <section className="container mx-auto px-4 py-4 md:py-0 md:-mt-14">
+//         <div className="flex flex-col md:flex-row items-center gap-2">
+//           {/* IMAGE */}
+//           <div className="md:w-1/2 relative group">
+//             <img
+//               src={saas1}
+//               alt="SAAS Centre"
+//               className="w-full rounded-2xl object-cover transform group-hover:scale-[1.02] transition-all duration-300"
+//             />
+//           </div>
+
+//           {/* TEXT CONTENT */}
+//           <div className="md:w-1/2">
+//             <h1 className="text-3xl md:text-3xl font-extrabold text-[#00A297] leading-tight">
+//               SAAS
+//             </h1>
+
+//             <h2 className="text-lg md:text-2xl font-semibold text-gray-800 mt-2">
+//               Superspeciality — Chest, Allergy & Sleep Centre
+//             </h2>
+
+//             <div className="w-20 h-1 bg-[#00A297] rounded-full my-5" />
+
+//             <p className="text-gray-600 text-md font-medium leading-relaxed">
+//               Comprehensive care for respiratory diseases, allergy disorders,
+//               and sleep-related issues with modern diagnostics, pulmonary
+//               rehabilitation and advanced CPAP therapy.
+//             </p>
+
+//             {/* SERVICE ICON GRID */}
+//             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-6">
+//               {[
+//                 {
+//                   icon: <FaStethoscope />,
+//                   title: "Pulmonology",
+//                   sub: "Diagnostics & care",
+//                 },
+//                 {
+//                   icon: <FaHeartbeat />,
+//                   title: "Sleep Medicine",
+//                   sub: "Sleep study & CPAP",
+//                 },
+//                 {
+//                   icon: <FaUserMd />,
+//                   title: "Allergy Clinic",
+//                   sub: "Testing & immunotherapy",
+//                 },
+//                 {
+//                   icon: <FaBed />,
+//                   title: "Pulmonary Rehab",
+//                   sub: "Exercise & recovery",
+//                 },
+//               ].map((item, index) => (
+//                 <div
+//                   key={index}
+//                   className="flex items-start gap-4 bg-white p-4 rounded-xl shadow hover:shadow-md transition-all border border-[#00A297]"
+//                 >
+//                   <div className="text-[#00A297] text-xl">{item.icon}</div>
+//                   <div>
+//                     <div className="font-semibold">{item.title}</div>
+//                     <div className="text-xs text-gray-500">{item.sub}</div>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ⭐ FULL-WIDTH SUMMARY SECTION ⭐ */}
+//       <section className="w-full bg-white py-16 px-4 md:-mt-28">
+//         <div className="max-w-6xl mx-auto">
+//           <p className="text-gray-700 text-base md:text-lg leading-relaxed text-center">
+//             SAAS is a dedicated superspeciality centre offering expert care in
+//             pulmonology, allergy management, and sleep medicine. With advanced
+//             diagnostics, comprehensive rehabilitation, and an experienced
+//             medical team, we ensure precise evaluation and effective treatment
+//             for all respiratory and sleep-related conditions.
+//           </p>
+//         </div>
+//       </section>
+
+//       {/* ================= SLEEP APNEA SECTION ================= */}
+//       <section className="container mx-auto px-4 py-6 md:py-0 md:-mt-8">
+//         <div className="max-w-6xl mx-auto">
+//           {/* Heading */}
+//           <h2 className="text-3xl md:text-3xl font-bold text-center text-black">
+//             स्लीप एप्निया (<span className="text-[#00A297]">Sleep Apnea</span>)
+//           </h2>
+
+//           <p className="text-center text-gray-600 mt-2 text-md font-medium md:text-xl">
+//             खर्राटों से जुड़ी एक गंभीर बीमारी — चुपचाप आपकी जान भी ले सकती है
+//           </p>
+
+//           <div className="w-24 h-1 bg-[#00A297] mx-auto rounded-full my-8"></div>
+
+//           {/* LEFT TEXT — RIGHT TEXT */}
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+//             {/* LEFT SIDE — Symptoms */}
+//             <div>
+//               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+//                 स्लीप एप्निया के सामान्य लक्षण
+//               </h3>
+
+//               <ul className="space-y-3 text-gray-700 text-md font-medium">
+//                 {[
+//                   "तेज़ खर्राटे लेना",
+//                   "रात में बार–बार पेशाब आना",
+//                   "अधिक/दिन के समय ज़्यादा नींद आना",
+//                   "सुबह के वक्त सिर में दर्द",
+//                   "मोटापा / तोंद निकलना",
+//                 ].map((item, i) => (
+//                   <li key={i} className="flex gap-3 items-start">
+//                     <span className="text-[#00A297] text-xl mt-1">•</span>
+//                     <span>{item}</span>
+//                   </li>
+//                 ))}
+//               </ul>
+//             </div>
+
+//             {/* RIGHT SIDE — Complications */}
+//             <div>
+//               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+//                 स्लीप एप्निया का इलाज न करने पर क्या हो सकता है?
+//               </h3>
+
+//               <ul className="space-y-3 text-gray-700 text-md font-medium">
+//                 {[
+//                   "उच्च रक्तचाप",
+//                   "दिल की बीमारी",
+//                   "स्ट्रोक का खतरा",
+//                   "मधुमेह (डायबिटीज)",
+//                   "थकान और दिन में नींद आना",
+//                 ].map((item, i) => (
+//                   <li key={i} className="flex gap-3 items-start">
+//                     <span className="text-[#00A297] text-xl mt-1">•</span>
+//                     <span>{item}</span>
+//                   </li>
+//                 ))}
+//               </ul>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ================= CORE SERVICES SECTION ================= */}
+//       <section id="services" className="container mx-auto px-4 py-12">
+//         <div className="flex flex-col md:flex-row-reverse gap-12 items-center">
+//           {/* IMAGE RIGHT SIDE */}
+//           <div className="md:w-1/2">
+//             <img
+//               src={hospital}
+//               alt="SAAS Services"
+//               className="rounded-2xl shadow-xl w-full object-cover hover:scale-[1.02] transition-all duration-300"
+//             />
+//           </div>
+
+//           {/* TEXT LEFT SIDE */}
+//           <div className="md:w-1/2">
+//             <h3 className="text-3xl font-bold text-gray-800">
+//               Core <span className="text-[#00A297]">Services</span>
+//             </h3>
+
+//             <div className="w-20 h-1 bg-[#00A297] rounded-full my-4" />
+
+//             <p className="text-gray-600 mb-6 text-md font-medium">
+//               We provide world-class diagnosis and treatment for Lung Disorders,
+//               Allergies, and Sleep-related diseases.
+//             </p>
+
+//             <ul className="grid grid-cols-2 sm:grid-cols-2 gap-4">
+//               {[
+//                 {
+//                   icon: <FaStethoscope className="text-[#00A297] text-xl" />,
+//                   text: "Comprehensive Lung Function Testing",
+//                 },
+//                 {
+//                   icon: <FaHeartbeat className="text-[#00A297] text-xl" />,
+//                   text: "Level 1 Sleep Study (PSG)",
+//                 },
+//                 {
+//                   icon: <FaBed className="text-[#00A297] text-xl" />,
+//                   text: "CPAP / BIPAP Titration",
+//                 },
+//                 {
+//                   icon: <FaUserMd className="text-[#00A297] text-xl" />,
+//                   text: "Pulmonary Rehabilitation",
+//                 },
+//                 {
+//                   icon: <FaStethoscope className="text-[#00A297] text-xl" />,
+//                   text: "Allergy Testing & Immunotherapy",
+//                 },
+//                 {
+//                   icon: <FaHeartbeat className="text-[#00A297] text-xl" />,
+//                   text: "Bronchoscopy & Emergency Respiratory Care",
+//                 },
+//               ].map((item, index) => (
+//                 <li
+//                   key={index}
+//                   className="bg-white border border-[#00A297] p-4 rounded-xl shadow hover:shadow-md transition flex items-start gap-3"
+//                 >
+//                   {item.icon}
+//                   <span className="text-gray-700 font-medium">{item.text}</span>
+//                 </li>
+//               ))}
+//             </ul>
+//           </div>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default SAAS;
+
+import hospital from "../assets/Hospital.webp";
+import saas1 from "../assets/saas1.webp";
 
 import {
   FaPhoneAlt,
@@ -711,106 +957,105 @@ const SAAS = () => {
         </div>
       </section>
 
-{/* ================= MAIN HERO SECTION ================= */}
-<section className="container mx-auto px-4 py-4 md:py-0 md:-mt-14">
-  <div className="flex flex-col md:flex-row items-center gap-2">
+      {/* ================= MAIN HERO SECTION ================= */}
+      <section className="container mx-auto px-4 py-8 md:py-0 md:-mt-10 lg:-mt-16">
+        <div className="flex flex-col md:flex-row items-center gap-6 lg:gap-10">
+          {/* IMAGE */}
+          <div className="md:w-1/2 relative group w-full">
+            <img
+              src={saas1}
+              alt="SAAS Centre"
+              className="w-full rounded-2xl object-cover transform group-hover:scale-[1.02] transition-all duration-300"
+            />
+          </div>
 
-    {/* IMAGE */}
-    <div className="md:w-1/2 relative group">
-      <img
-        src={saas1}
-        alt="SAAS Centre"
-        className="w-full rounded-2xl object-cover transform group-hover:scale-[1.02] transition-all duration-300"
-      />
-    </div>
+          {/* TEXT CONTENT */}
+          <div className="md:w-1/2 w-full">
+            <h1 className="text-3xl md:text-3xl font-extrabold text-[#00A297] leading-tight">
+              SAAS
+            </h1>
 
-    {/* TEXT CONTENT */}
-    <div className="md:w-1/2">
-      <h1 className="text-3xl md:text-3xl font-extrabold text-[#00A297] leading-tight">
-        SAAS
-      </h1>
+            <h2 className="text-lg md:text-2xl font-semibold text-gray-800 mt-2 leading-snug md:leading-normal">
+              Superspeciality — Chest, Allergy & Sleep Centre
+            </h2>
 
-      <h2 className="text-lg md:text-2xl font-semibold text-gray-800 mt-2">
-        Superspeciality — Chest, Allergy & Sleep Centre
-      </h2>
+            <div className="w-20 h-1 bg-[#00A297] rounded-full my-5" />
 
-      <div className="w-20 h-1 bg-[#00A297] rounded-full my-5" />
+            <p className="text-gray-600 text-md font-medium leading-relaxed">
+              Comprehensive care for respiratory diseases, allergy disorders,
+              and sleep-related issues with modern diagnostics, pulmonary
+              rehabilitation and advanced CPAP therapy.
+            </p>
 
-      <p className="text-gray-600 text-md font-medium leading-relaxed">
-        Comprehensive care for respiratory diseases, allergy disorders,
-        and sleep-related issues with modern diagnostics, pulmonary
-        rehabilitation and advanced CPAP therapy.
-      </p>
-
-      {/* SERVICE ICON GRID */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-6">
-        {[
-          {
-            icon: <FaStethoscope />,
-            title: "Pulmonology",
-            sub: "Diagnostics & care",
-          },
-          {
-            icon: <FaHeartbeat />,
-            title: "Sleep Medicine",
-            sub: "Sleep study & CPAP",
-          },
-          {
-            icon: <FaUserMd />,
-            title: "Allergy Clinic",
-            sub: "Testing & immunotherapy",
-          },
-          {
-            icon: <FaBed />,
-            title: "Pulmonary Rehab",
-            sub: "Exercise & recovery",
-          },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="flex items-start gap-4 bg-white p-4 rounded-xl shadow hover:shadow-md transition-all border border-[#00A297]"
-          >
-            <div className="text-[#00A297] text-xl">{item.icon}</div>
-            <div>
-              <div className="font-semibold">{item.title}</div>
-              <div className="text-xs text-gray-500">{item.sub}</div>
+            {/* SERVICE ICON GRID */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4 mt-6">
+              {[
+                {
+                  icon: <FaStethoscope />,
+                  title: "Pulmonology",
+                  sub: "Diagnostics & care",
+                },
+                {
+                  icon: <FaHeartbeat />,
+                  title: "Sleep Medicine",
+                  sub: "Sleep study & CPAP",
+                },
+                {
+                  icon: <FaUserMd />,
+                  title: "Allergy Clinic",
+                  sub: "Testing & immunotherapy",
+                },
+                {
+                  icon: <FaBed />,
+                  title: "Pulmonary Rehab",
+                  sub: "Exercise & recovery",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-4 bg-white p-4 rounded-xl shadow hover:shadow-md transition-all border border-[#00A297]"
+                >
+                  <div className="text-[#00A297] text-xl">{item.icon}</div>
+                  <div>
+                    <div className="font-semibold">{item.title}</div>
+                    <div className="text-xs text-gray-500">{item.sub}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
-{/* ⭐ FULL-WIDTH SUMMARY SECTION ⭐ */}
-<section className="w-full bg-white py-16 px-4 md:-mt-28">
-  <div className="max-w-6xl mx-auto">
-    <p className="text-gray-700 text-base md:text-lg leading-relaxed text-center">
-      SAAS is a dedicated superspeciality centre offering expert care in
-      pulmonology, allergy management, and sleep medicine. With advanced 
-      diagnostics, comprehensive rehabilitation, and an experienced medical 
-      team, we ensure precise evaluation and effective treatment for all 
-      respiratory and sleep-related conditions.
-    </p>
-  </div>
-</section>
+      {/* ⭐ FULL-WIDTH SUMMARY SECTION ⭐ */}
+      <section className="w-full bg-white py-14 px-4 md:py-20">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-gray-700 text-base md:text-lg leading-relaxed text-center px-2 md:px-10">
+            SAAS is a dedicated superspeciality centre offering expert care in
+            pulmonology, allergy management, and sleep medicine. With advanced
+            diagnostics, comprehensive rehabilitation, and an experienced
+            medical team, we ensure precise evaluation and effective treatment
+            for all respiratory and sleep-related conditions.
+          </p>
+        </div>
+      </section>
 
       {/* ================= SLEEP APNEA SECTION ================= */}
-      <section className="container mx-auto px-4 py-6 md:py-0 md:-mt-8">
+      <section className="container mx-auto px-4 py-8 md:py-10">
         <div className="max-w-6xl mx-auto">
           {/* Heading */}
-          <h2 className="text-3xl md:text-3xl font-bold text-center text-black">
+          <h2 className="text-3xl md:text-3xl font-bold text-center text-black leading-snug">
             स्लीप एप्निया (<span className="text-[#00A297]">Sleep Apnea</span>)
           </h2>
 
-          <p className="text-center text-gray-600 mt-2 text-md font-medium md:text-xl">
+          <p className="text-center text-gray-600 mt-2 text-md font-medium md:text-xl leading-snug">
             खर्राटों से जुड़ी एक गंभीर बीमारी — चुपचाप आपकी जान भी ले सकती है
           </p>
 
           <div className="w-24 h-1 bg-[#00A297] mx-auto rounded-full my-8"></div>
 
           {/* LEFT TEXT — RIGHT TEXT */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
             {/* LEFT SIDE — Symptoms */}
             <div>
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
@@ -835,7 +1080,7 @@ const SAAS = () => {
 
             {/* RIGHT SIDE — Complications */}
             <div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4 leading-snug">
                 स्लीप एप्निया का इलाज न करने पर क्या हो सकता है?
               </h3>
 
@@ -860,30 +1105,34 @@ const SAAS = () => {
 
       {/* ================= CORE SERVICES SECTION ================= */}
       <section id="services" className="container mx-auto px-4 py-12">
-        <div className="flex flex-col md:flex-row-reverse gap-12 items-center">
+        <div className="flex flex-col md:flex-row-reverse gap-10 lg:gap-16 items-center">
           {/* IMAGE RIGHT SIDE */}
-          <div className="md:w-1/2">
+          <div className="md:w-1/2 w-full ">
             <img
               src={hospital}
               alt="SAAS Services"
-              className="rounded-2xl shadow-xl w-full object-cover hover:scale-[1.02] transition-all duration-300"
+              className="
+    rounded-2xl shadow-xl w-full object-cover 
+    hover:scale-[1.02] transition-all duration-300
+    md:h-80 lg:h-auto 
+  "
             />
           </div>
 
           {/* TEXT LEFT SIDE */}
-          <div className="md:w-1/2">
-            <h3 className="text-3xl font-bold text-gray-800">
+          <div className="md:w-1/2 w-full">
+            <h3 className="text-3xl font-bold text-gray-800 leading-snug">
               Core <span className="text-[#00A297]">Services</span>
             </h3>
 
             <div className="w-20 h-1 bg-[#00A297] rounded-full my-4" />
 
-            <p className="text-gray-600 mb-6 text-md font-medium">
+            <p className="text-gray-600 mb-6 text-md font-medium leading-relaxed">
               We provide world-class diagnosis and treatment for Lung Disorders,
               Allergies, and Sleep-related diseases.
             </p>
 
-            <ul className="grid grid-cols-2 sm:grid-cols-2 gap-4">
+            <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4">
               {[
                 {
                   icon: <FaStethoscope className="text-[#00A297] text-xl" />,

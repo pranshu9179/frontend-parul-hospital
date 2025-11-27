@@ -455,7 +455,7 @@
 
 // export default Blog;
 
-import blogHero from "../assets/blogHero.png";
+import blogHero from "../assets/blogHero.webp";
 
 const Blog = () => {
   return (

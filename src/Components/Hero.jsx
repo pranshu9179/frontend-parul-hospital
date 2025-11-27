@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Hospital from "../assets/Hospital.jpg";
+import Hospital from "../assets/Hospital.webp";
 import { FaStar, FaStarHalfAlt, FaGoogle } from "react-icons/fa";
 
 const slides = [

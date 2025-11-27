@@ -1,6 +1,6 @@
 import React from "react";
-import hospital from "../assets/Hospital.jpg";
-import nabh from "../assets/nabh.png";
+import hospital from "../assets/Hospital.webp";
+import nabh from "../assets/nabh.webp";
 import {
   FaAward,
   FaUserMd,

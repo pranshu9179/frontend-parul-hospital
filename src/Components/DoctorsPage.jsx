@@ -10,13 +10,13 @@ import {
   FaRegCalendarAlt,
   FaStar,
 } from "react-icons/fa";
-import drprakhar from "../assets/doctors/prakhar3.jpg";
-import news from "../assets/doctors/news.jpg";
-import meeta from "../assets/doctors/meeta.jpg";
-import pankaj from "../assets/doctors/pankaj.jpg";
+import drprakhar from "../assets/doctors/prakhar3.webp";
+import news from "../assets/doctors/news.webp";
+import meeta from "../assets/doctors/meeta.webp";
+import pankaj from "../assets/doctors/pankaj.webp";
 
-import mam from "../assets/mam2.jpg";
-import image from "../assets/new.jpg";
+import mam from "../assets/mam2.webp";
+import image from "../assets/new.webp";
 import { Helmet } from "react-helmet";
 const DoctorsPage = () => {
   // const { id } = useParams();
@@ -468,8 +468,7 @@ const DoctorsPage = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-
-    {/* SEO — META TAGS */}
+      {/* SEO — META TAGS */}
       <Helmet>
         <title>Our Doctors – Expert Physicians at Parul Hospital</title>
         <meta
